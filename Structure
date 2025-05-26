@@ -1,0 +1,21 @@
+perplexity-health-researcher/
+├── app.py                    # Main FastAPI application, API routes, and core logic
+├── schemas.py                # Pydantic models for request/response data
+├── services.py               # Contains Perplexity interaction, research orchestration, report structuring
+├── templates/
+│   └── index.html            # Basic HTML page for user interaction
+├── static/
+│   ├── css/
+│   │   └── style.css         # Basic CSS
+│   └── js/
+│       └── script.js         # JavaScript for frontend logic
+├── .env                      # For API key (DO NOT COMMIT)
+└── requirements.txt          # Python dependencies
+
+in the .env file :
+PERPLEXITY_API_KEY="your_actual_perplexity_api_key_here"
+also create a virtual enviroment and then after that run pip install -r requirements.txt after this you have installed all the fucking libraries needed then run the venv and then run the app.py
+Also dont use the live server instead go to the url http://127.0.0.1:8000/
+services.py handles the api stuff
+schemas.py is just for the structure of data to api
+app.py for handling the server
