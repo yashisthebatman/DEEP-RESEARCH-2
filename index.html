@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Regional Health Analyzer</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='/css/style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Removed Chart.js plugins if they were only for PDF nuances, but can keep if generally useful -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script> -->
+</head>
+<body>
+    <div class="container">
+        <h1>AI Regional Health Analyzer</h1>
+        <p>Enter a specific geographical area (e.g., "Mumbai, India", "California, USA", "Kenya", "London Borough of Tower Hamlets", "Rural Anytown, State") 
+           to generate an extremely detailed health analysis report. The report will comprehensively cover key health indicators, disease prevalence, emerging trends, healthcare system insights, government schemes, challenges, and recommendations, all driven by AI deep research and formatted to resemble a professional document with integrated charts and tables.</p>
+
+        <div class="input-section">
+            <textarea id="researchAreaInput" rows="2" placeholder="Enter geographical area (e.g., City, Region, Country)..."></textarea>
+            <button id="startResearchBtn">Generate Detailed Health Report</button>
+        </div>
+
+        <div id="loadingIndicator" style="display:none;">
+            <p>Generating an extremely detailed health analysis report for the specified area... This involves multiple advanced AI queries and analysis, and may take several minutes (potentially 5-10+ minutes for very broad areas or deep analysis). Please be patient.</p>
+            <div class="spinner"></div>
+        </div>
+        
+        <div id="errorMessage" class="error-message" style="display:none;"></div>
+
+        <div id="reportSection" style="display:none;">
+            <div class="report-header-actions"> <!-- This div can be simplified or removed if button is gone -->
+                <h2 id="reportAreaTitle"></h2>
+                <!-- <button id="exportPdfBtn" style="display:none;">Export to PDF</button> REMOVED -->
+            </div>
+            <div id="reportContent" class="report-content-area">
+                <!-- Full Markdown report will be rendered here, including chart placeholders -->
+            </div>
+            
+            <div id="followUpSection" style="margin-top: 30px;">
+                <h3>Ask a Follow-up Question About This Health Report</h3>
+                <textarea id="followUpQuestion" rows="2" placeholder="Ask a specific question about the generated health analysis..."></textarea>
+                <button id="askFollowUpBtn">Ask</button>
+                <div id="followUpLoadingIndicator" style="display:none;">
+                    <p>Thinking...</p>
+                    <div class="spinner-small"></div>
+                </div>
+                <div id="followUpErrorMessage" class="error-message" style="display:none;"></div>
+                <div id="followUpAnswer" class="report-content-area" style="margin-top: 10px;"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', path='/js/script.js') }}"></script>
+</body>
+</html>
